@@ -1,0 +1,23 @@
+Return the highest rated game, along with the top 5 comments for that game in the following JSON object
+{
+  "gid": 123,
+  "name": "boardgame name",
+  "ranking": 4,
+  "url": "game url",
+  "image": "image url",
+  "comments": [
+    {
+      "user": "Username",
+      "rating": 5,
+      "text": "<comment text>"
+    },
+    {
+      "user": "Username",
+      "rating": 5,
+      "text": "<comment text>"
+    }
+  ]
+}
+
+If no games were found return a 404 status code with the following error payload
+    { message: 'An error message' }
