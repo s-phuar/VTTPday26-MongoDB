@@ -22,7 +22,7 @@ public class CommentsRepository {
     private MongoTemplate template;
 
     // db.comments.find({ gid: 123 })
-    //      .sort({ rating: -1 })
+    //      .sort({ rating: 1 })
     //      .limit(5)
     //      projection({ _id: 0, user: 1, rating: 1, c_text: 1 })
 
