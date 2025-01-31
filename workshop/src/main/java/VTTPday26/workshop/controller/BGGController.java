@@ -16,9 +16,9 @@ public class BGGController {
     @Autowired
     private BGGService bggService;
 
-    //localhost:8080/games?limit=5&rank=1&name=pan
+    //localhost:8080/games?limit=5&name=pan
     @GetMapping(path="/games", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<JsonObject> getGames(
+    public ResponseEntity<String> getGames(
         @RequestParam(name="limit", defaultValue = "25") int limit,
         @RequestParam(name="offset", defaultValue = "0") int offset,
         @RequestParam(name="name", defaultValue = "") String name
@@ -27,12 +27,12 @@ public class BGGController {
         JsonObject gameJson = bggService.getGames(name, limit, offset);
         System.out.println(gameJson.toString());
 
-        return ResponseEntity.ok().body(gameJson);
+        return ResponseEntity.ok().body(gameJson.toString());
     }
 
     //localhost:8080/games/ranking?limit=30&rank=30
     @GetMapping(path="/games/ranking", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<JsonObject> getGameByRank(
+    public ResponseEntity<String> getGameByRank(
         @RequestParam(name="limit", defaultValue = "25") int limit,
         @RequestParam(name="offset", defaultValue = "0") int offset,
         @RequestParam(name="rank", defaultValue = "") int rank
@@ -41,19 +41,19 @@ public class BGGController {
         JsonObject gameJson = bggService.getGamesByRank(limit, offset, rank);
         System.out.println(gameJson.toString());
 
-        return ResponseEntity.ok().body(gameJson);
+        return ResponseEntity.ok().body(gameJson.toString());
     }
 
     //localhost:8080/game/679b393d3aeef01315cb6bec
     @GetMapping(path="/game/{game_id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<JsonObject> getGameById(
+    public ResponseEntity<String> getGameById(
         @PathVariable(name="game_id") String id){
 
         JsonObject jsonObj = bggService.getGameById(id);
         
         System.out.println(jsonObj.toString());
         
-        return ResponseEntity.ok().body(jsonObj);
+        return ResponseEntity.ok().body(jsonObj.toString());
     }
 
 
