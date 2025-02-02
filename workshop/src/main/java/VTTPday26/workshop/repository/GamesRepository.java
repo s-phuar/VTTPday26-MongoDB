@@ -56,6 +56,7 @@ public class GamesRepository {
 
     }
 
+    //db.tv_shows.find({ _id: ObjectId(‘abc123’) })
     public Document getGameById(String id) {
         try{
         ObjectId docId = new ObjectId(id);
